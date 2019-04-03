@@ -1,3 +1,8 @@
+variable "should_create" {
+  type    = "string"
+  default = true
+}
+
 variable "api_id" {
   type = "string"
 }
@@ -19,17 +24,17 @@ variable "authorization" {
 }
 
 variable "authorizer_id" {
-  type = "string"
+  type    = "string"
   default = ""
 }
 
 variable "authorization_scopes" {
-  type = "list"
+  type    = "list"
   default = []
 }
 
 variable "api_key_required" {
-  type = "string"
+  type    = "string"
   default = ""
 }
 

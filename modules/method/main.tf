@@ -1,6 +1,8 @@
 data "aws_region" "current" {}
 
 resource "aws_api_gateway_method" "method" {
+  count = "${var.should_create == true ? 1 : 0}"
+
   rest_api_id          = "${var.api_id}"
   resource_id          = "${var.api_resource_id}"
   http_method          = "${var.method}"
@@ -17,6 +19,8 @@ resource "aws_api_gateway_method" "method" {
 }
 
 resource "aws_api_gateway_integration" "integration" {
+  count = "${var.should_create == true ? 1 : 0}"
+
   rest_api_id = "${var.api_id}"
   resource_id = "${var.api_resource_id}"
   http_method = "${aws_api_gateway_method.method.http_method}"
@@ -34,6 +38,8 @@ resource "aws_api_gateway_integration" "integration" {
 }
 
 resource "aws_api_gateway_method_response" "200" {
+  count = "${var.should_create == true ? 1 : 0}"
+
   rest_api_id = "${var.api_id}"
   resource_id = "${var.api_resource_id}"
   http_method = "${aws_api_gateway_method.method.http_method}"
@@ -51,6 +57,8 @@ resource "aws_api_gateway_method_response" "200" {
 }
 
 resource "aws_api_gateway_method_response" "400" {
+  count = "${var.should_create == true ? 1 : 0}"
+
   rest_api_id = "${var.api_id}"
   resource_id = "${var.api_resource_id}"
   http_method = "${aws_api_gateway_method.method.http_method}"
@@ -68,6 +76,8 @@ resource "aws_api_gateway_method_response" "400" {
 }
 
 resource "aws_api_gateway_integration_response" "200" {
+  count = "${var.should_create == true ? 1 : 0}"
+
   rest_api_id = "${var.api_id}"
   resource_id = "${var.api_resource_id}"
   http_method = "${aws_api_gateway_method.method.http_method}"
@@ -81,6 +91,8 @@ resource "aws_api_gateway_integration_response" "200" {
 }
 
 resource "aws_api_gateway_integration_response" "400" {
+  count = "${var.should_create == true ? 1 : 0}"
+
   rest_api_id = "${var.api_id}"
   resource_id = "${var.api_resource_id}"
   http_method = "${aws_api_gateway_method.method.http_method}"
