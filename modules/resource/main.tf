@@ -11,6 +11,21 @@ module "cors" {
   api_resource_id = "${aws_api_gateway_resource.main.id}"
 }
 
+module "any" {
+  source = "../method"
+
+  should_create = "${var.any_request_template == "" ? false : true}"
+
+  api_id          = "${var.rest_api_id}"
+  api_resource_id = "${aws_api_gateway_resource.main.id}"
+
+  method        = "ANY"
+  lambda        = "${var.any_lambda}"
+  authorization = "${var.any_authorization}"
+
+  request_template = "${var.any_request_template}"
+}
+
 module "get" {
   source = "../method"
 

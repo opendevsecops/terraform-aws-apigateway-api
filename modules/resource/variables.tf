@@ -4,6 +4,18 @@ variable "parent_id" {}
 
 variable "parent_part" {}
 
+variable "any_lambda" {
+  default = ""
+}
+
+variable "any_authorization" {
+  default = "NONE"
+}
+
+variable "any_request_template" {
+  default = ""
+}
+
 variable "get_lambda" {
   default = ""
 }
