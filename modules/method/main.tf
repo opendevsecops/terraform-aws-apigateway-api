@@ -117,7 +117,7 @@ resource "aws_api_gateway_integration_response" "400" {
   http_method = "${aws_api_gateway_method.method.http_method}"
   status_code = "${aws_api_gateway_method_response.400.status_code}"
 
-  selection_pattern = "(?![Uu]nauthorized)"
+  selection_pattern = "^(?![Uu]nauthorized).+"
 
   response_parameters {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
@@ -143,7 +143,7 @@ resource "aws_api_gateway_integration_response" "401" {
   http_method = "${aws_api_gateway_method.method.http_method}"
   status_code = "${aws_api_gateway_method_response.401.status_code}"
 
-  selection_pattern = "[Uu]nauthorized"
+  selection_pattern = "^[Uu]nauthorized"
 
   response_parameters {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
