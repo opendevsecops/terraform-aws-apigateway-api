@@ -75,6 +75,25 @@ resource "aws_api_gateway_method_response" "400" {
   depends_on = ["aws_api_gateway_method.method"]
 }
 
+resource "aws_api_gateway_method_response" "401" {
+  count = "${var.should_create == true ? 1 : 0}"
+
+  rest_api_id = "${var.api_id}"
+  resource_id = "${var.api_resource_id}"
+  http_method = "${aws_api_gateway_method.method.http_method}"
+  status_code = "401"
+
+  response_parameters {
+    "method.response.header.Access-Control-Allow-Origin" = true
+  }
+
+  response_models {
+    "application/json" = "Error"
+  }
+
+  depends_on = ["aws_api_gateway_method.method"]
+}
+
 resource "aws_api_gateway_integration_response" "200" {
   count = "${var.should_create == true ? 1 : 0}"
 
@@ -114,4 +133,30 @@ EOF
   }
 
   depends_on = ["aws_api_gateway_method.method", "aws_api_gateway_method_response.400"]
+}
+
+resource "aws_api_gateway_integration_response" "401" {
+  count = "${var.should_create == true ? 1 : 0}"
+
+  rest_api_id = "${var.api_id}"
+  resource_id = "${var.api_resource_id}"
+  http_method = "${aws_api_gateway_method.method.http_method}"
+  status_code = "${aws_api_gateway_method_response.401.status_code}"
+
+  selection_pattern = "[Uu]nauthorized"
+
+  response_parameters {
+    "method.response.header.Access-Control-Allow-Origin" = "'*'"
+  }
+
+  response_templates = {
+    "application/json" = <<EOF
+#set($message = $input.path('$.errorMessage'))
+{
+  "message": "$message"
+}
+EOF
+  }
+
+  depends_on = ["aws_api_gateway_method.method", "aws_api_gateway_method_response.401"]
 }
