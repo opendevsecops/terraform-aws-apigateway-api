@@ -47,11 +47,10 @@ resource "aws_api_gateway_method_response" "200" {
 
   response_parameters {
     "method.response.header.Access-Control-Allow-Origin" = true
+    "method.response.header.Content-Type"                = true
   }
 
-  response_models {
-    "application/json" = "${var.response_model}"
-  }
+  response_models = "${map("${var.response_content_type}", "${var.response_model}")}"
 
   depends_on = ["aws_api_gateway_method.method"]
 }
@@ -102,8 +101,11 @@ resource "aws_api_gateway_integration_response" "200" {
   http_method = "${aws_api_gateway_method.method.http_method}"
   status_code = "${aws_api_gateway_method_response.200.status_code}"
 
+  content_handling = "${var.binary ? "CONVERT_TO_BINARY" : "CONVERT_TO_TEXT"}"
+
   response_parameters {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
+    "method.response.header.Content-Type"                = "'${var.response_content_type}'"
   }
 
   depends_on = ["aws_api_gateway_method.method", "aws_api_gateway_method_response.200"]

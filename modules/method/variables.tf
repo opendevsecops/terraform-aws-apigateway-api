@@ -47,9 +47,19 @@ variable "request_model" {
   default = "Empty"
 }
 
+variable "binary" {
+  type    = "string"
+  default = false
+}
+
 variable "response_model" {
   type    = "string"
   default = "Empty"
+}
+
+variable "response_content_type" {
+  type    = "string"
+  default = "application/json"
 }
 
 variable "request_validator_id" {

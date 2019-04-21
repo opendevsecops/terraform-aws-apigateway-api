@@ -24,6 +24,10 @@ module "any" {
   authorization = "${var.any_authorization}"
 
   request_template = "${var.any_request_template}"
+
+  binary = "${var.any_binary}"
+
+  response_content_type = "${var.any_response_content_type}"
 }
 
 module "get" {
@@ -39,6 +43,10 @@ module "get" {
   authorization = "${var.get_authorization}"
 
   request_template = "${var.get_request_template}"
+
+  binary = "${var.get_binary}"
+
+  response_content_type = "${var.get_response_content_type}"
 }
 
 module "post" {
@@ -54,6 +62,10 @@ module "post" {
   authorization = "${var.post_authorization}"
 
   request_template = "${var.post_request_template}"
+
+  binary = "${var.post_binary}"
+
+  response_content_type = "${var.post_response_content_type}"
 }
 
 module "patch" {
@@ -69,6 +81,10 @@ module "patch" {
   authorization = "${var.patch_authorization}"
 
   request_template = "${var.patch_request_template}"
+
+  binary = "${var.patch_binary}"
+
+  response_content_type = "${var.patch_response_content_type}"
 }
 
 module "put" {
@@ -84,6 +100,10 @@ module "put" {
   authorization = "${var.put_authorization}"
 
   request_template = "${var.put_request_template}"
+
+  binary = "${var.put_binary}"
+
+  response_content_type = "${var.put_response_content_type}"
 }
 
 module "delete" {
@@ -99,4 +119,8 @@ module "delete" {
   authorization = "${var.delete_authorization}"
 
   request_template = "${var.delete_request_template}"
+
+  binary = "${var.delete_binary}"
+
+  response_content_type = "${var.delete_response_content_type}"
 }
