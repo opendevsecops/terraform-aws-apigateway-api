@@ -52,6 +52,11 @@ variable "binary" {
   default = false
 }
 
+variable "request_validator_id" {
+  type    = "string"
+  default = ""
+}
+
 variable "response_model" {
   type    = "string"
   default = "Empty"
@@ -60,11 +65,6 @@ variable "response_model" {
 variable "response_content_type" {
   type    = "string"
   default = "application/json"
-}
-
-variable "request_validator_id" {
-  type    = "string"
-  default = ""
 }
 
 variable "request_parameters" {
