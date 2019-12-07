@@ -12,6 +12,14 @@ variable "any_authorization" {
   default = "NONE"
 }
 
+variable "any_request_validator_id" {
+  default = ""
+}
+
+variable "any_request_model" {
+  default = ""
+}
+
 variable "any_request_template" {
   default = ""
 }
@@ -30,6 +38,14 @@ variable "get_lambda" {
 
 variable "get_authorization" {
   default = "NONE"
+}
+
+variable "get_request_validator_id" {
+  default = ""
+}
+
+variable "get_request_model" {
+  default = ""
 }
 
 variable "get_request_template" {
@@ -52,6 +68,14 @@ variable "post_authorization" {
   default = "NONE"
 }
 
+variable "post_request_validator_id" {
+  default = ""
+}
+
+variable "post_request_model" {
+  default = ""
+}
+
 variable "post_binary" {
   default = false
 }
@@ -70,6 +94,14 @@ variable "patch_lambda" {
 
 variable "patch_authorization" {
   default = "NONE"
+}
+
+variable "patch_request_validator_id" {
+  default = ""
+}
+
+variable "patch_request_model" {
+  default = ""
 }
 
 variable "patch_request_template" {
@@ -92,6 +124,14 @@ variable "put_authorization" {
   default = "NONE"
 }
 
+variable "put_request_validator_id" {
+  default = ""
+}
+
+variable "put_request_model" {
+  default = ""
+}
+
 variable "put_request_template" {
   default = ""
 }
@@ -110,6 +150,14 @@ variable "delete_lambda" {
 
 variable "delete_authorization" {
   default = "NONE"
+}
+
+variable "delete_request_validator_id" {
+  default = ""
+}
+
+variable "delete_request_model" {
+  default = ""
 }
 
 variable "delete_request_template" {

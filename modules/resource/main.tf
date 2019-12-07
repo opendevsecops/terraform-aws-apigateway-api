@@ -23,6 +23,9 @@ module "any" {
   lambda        = "${var.any_lambda}"
   authorization = "${var.any_authorization}"
 
+  request_validator_id = "${var.any_request_validator_id}"
+  request_model        = "${var.any_request_model}"
+
   request_template = "${var.any_request_template}"
 
   binary = "${var.any_binary}"
@@ -41,6 +44,9 @@ module "get" {
   method        = "GET"
   lambda        = "${var.get_lambda}"
   authorization = "${var.get_authorization}"
+
+  request_validator_id = "${var.get_request_validator_id}"
+  request_model        = "${var.get_request_model}"
 
   request_template = "${var.get_request_template}"
 
@@ -61,6 +67,9 @@ module "post" {
   lambda        = "${var.post_lambda}"
   authorization = "${var.post_authorization}"
 
+  request_validator_id = "${var.post_request_validator_id}"
+  request_model        = "${var.post_request_model}"
+
   request_template = "${var.post_request_template}"
 
   binary = "${var.post_binary}"
@@ -79,6 +88,9 @@ module "patch" {
   method        = "PATCH"
   lambda        = "${var.patch_lambda}"
   authorization = "${var.patch_authorization}"
+
+  request_validator_id = "${var.patch_request_validator_id}"
+  request_model        = "${var.patch_request_model}"
 
   request_template = "${var.patch_request_template}"
 
@@ -99,6 +111,9 @@ module "put" {
   lambda        = "${var.put_lambda}"
   authorization = "${var.put_authorization}"
 
+  request_validator_id = "${var.put_request_validator_id}"
+  request_model        = "${var.put_request_model}"
+
   request_template = "${var.put_request_template}"
 
   binary = "${var.put_binary}"
@@ -117,6 +132,9 @@ module "delete" {
   method        = "DELETE"
   lambda        = "${var.delete_lambda}"
   authorization = "${var.delete_authorization}"
+
+  request_validator_id = "${var.delete_request_validator_id}"
+  request_model        = "${var.delete_request_model}"
 
   request_template = "${var.delete_request_template}"
 
