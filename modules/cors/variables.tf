@@ -1,13 +1,13 @@
 variable "api_id" {
-  type = "string"
+  type = string
 }
 
 variable "api_resource_id" {
-  type = "string"
+  type = string
 }
 
 variable "allowed_headers" {
-  type = "list"
+  type = list(string)
 
   default = [
     "Content-Type",
@@ -19,7 +19,7 @@ variable "allowed_headers" {
 }
 
 variable "allowed_methods" {
-  type = "list"
+  type = list(string)
 
   default = [
     "OPTIONS",
@@ -33,11 +33,12 @@ variable "allowed_methods" {
 }
 
 variable "allowed_origin" {
-  type    = "string"
+  type    = string
   default = "*"
 }
 
 variable "allowed_max_age" {
-  type    = "string"
+  type    = string
   default = "7200"
 }
+

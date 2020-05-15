@@ -1,73 +1,74 @@
 variable "should_create" {
-  type    = "string"
+  type    = string
   default = true
 }
 
 variable "api_id" {
-  type = "string"
+  type = string
 }
 
 variable "api_resource_id" {
-  type = "string"
+  type = string
 }
 
 variable "method" {
-  type = "string"
+  type = string
 }
 
 variable "lambda" {
-  type = "string"
+  type = string
 }
 
 variable "authorization" {
-  type = "string"
+  type = string
 }
 
 variable "authorizer_id" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "authorization_scopes" {
-  type    = "list"
+  type    = list(string)
   default = []
 }
 
 variable "api_key_required" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "request_template" {
-  type = "string"
+  type = string
 }
 
 variable "request_model" {
-  type    = "string"
+  type    = string
   default = "Empty"
 }
 
 variable "binary" {
-  type    = "string"
+  type    = string
   default = false
 }
 
 variable "request_validator_id" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "response_model" {
-  type    = "string"
+  type    = string
   default = "Empty"
 }
 
 variable "response_content_type" {
-  type    = "string"
+  type    = string
   default = "application/json"
 }
 
 variable "request_parameters" {
-  type    = "map"
+  type    = map(string)
   default = {}
 }
+

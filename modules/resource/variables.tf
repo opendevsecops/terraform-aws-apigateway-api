@@ -1,8 +1,11 @@
-variable "rest_api_id" {}
+variable "rest_api_id" {
+}
 
-variable "parent_id" {}
+variable "parent_id" {
+}
 
-variable "parent_part" {}
+variable "parent_part" {
+}
 
 variable "any_lambda" {
   default = ""
@@ -13,12 +16,12 @@ variable "any_authorization" {
 }
 
 variable "any_request_validator_id" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "any_request_model" {
-  type    = "string"
+  type    = string
   default = "Empty"
 }
 
@@ -43,12 +46,12 @@ variable "get_authorization" {
 }
 
 variable "get_request_validator_id" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "get_request_model" {
-  type    = "string"
+  type    = string
   default = "Empty"
 }
 
@@ -73,12 +76,12 @@ variable "post_authorization" {
 }
 
 variable "post_request_validator_id" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "post_request_model" {
-  type    = "string"
+  type    = string
   default = "Empty"
 }
 
@@ -103,12 +106,12 @@ variable "patch_authorization" {
 }
 
 variable "patch_request_validator_id" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "patch_request_model" {
-  type    = "string"
+  type    = string
   default = "Empty"
 }
 
@@ -133,12 +136,12 @@ variable "put_authorization" {
 }
 
 variable "put_request_validator_id" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "put_request_model" {
-  type    = "string"
+  type    = string
   default = "Empty"
 }
 
@@ -163,12 +166,12 @@ variable "delete_authorization" {
 }
 
 variable "delete_request_validator_id" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "delete_request_model" {
-  type    = "string"
+  type    = string
   default = "Empty"
 }
 
@@ -183,3 +186,4 @@ variable "delete_binary" {
 variable "delete_response_content_type" {
   default = "application/json"
 }
+
