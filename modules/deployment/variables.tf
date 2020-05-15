@@ -9,10 +9,3 @@ variable "stage_name" {
 variable "stage_description" {
   type = "string"
 }
-
-# depends_on workaround
-
-variable "depends_on" {
-  description = "Helper variable to simulate depends_on for terraform modules"
-  default     = []
-}

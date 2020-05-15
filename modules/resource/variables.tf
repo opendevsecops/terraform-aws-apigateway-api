@@ -183,10 +183,3 @@ variable "delete_binary" {
 variable "delete_response_content_type" {
   default = "application/json"
 }
-
-# depends_on workaround
-
-variable "depends_on" {
-  description = "Helper variable to simulate depends_on for terraform modules"
-  default     = []
-}

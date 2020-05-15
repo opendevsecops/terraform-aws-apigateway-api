@@ -41,10 +41,3 @@ variable "allowed_max_age" {
   type    = "string"
   default = "7200"
 }
-
-# depends_on workaround
-
-variable "depends_on" {
-  description = "Helper variable to simulate depends_on for terraform modules"
-  default     = []
-}
