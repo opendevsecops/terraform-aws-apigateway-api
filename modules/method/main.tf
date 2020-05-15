@@ -52,7 +52,7 @@ resource "aws_api_gateway_method_response" "S200" {
   }
 
   response_models = {
-    var.response_content_type = var.response_model
+    "${var.response_content_type}" = var.response_model
   }
 
   depends_on = [aws_api_gateway_method.method]
