@@ -2,7 +2,7 @@ data "aws_region" "current" {
 }
 
 resource "aws_api_gateway_method" "method" {
-  count = var.should_create == true ? 1 : 0
+  count = var.should_create ? 1 : 0
 
   rest_api_id          = var.api_id
   resource_id          = var.api_resource_id
@@ -20,7 +20,7 @@ resource "aws_api_gateway_method" "method" {
 }
 
 resource "aws_api_gateway_integration" "integration" {
-  count = var.should_create == true ? 1 : 0
+  count = var.should_create ? 1 : 0
 
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
@@ -39,7 +39,7 @@ resource "aws_api_gateway_integration" "integration" {
 }
 
 resource "aws_api_gateway_method_response" "S200" {
-  count = var.should_create == true ? 1 : 0
+  count = var.should_create ? 1 : 0
 
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
@@ -59,7 +59,7 @@ resource "aws_api_gateway_method_response" "S200" {
 }
 
 resource "aws_api_gateway_method_response" "S400" {
-  count = var.should_create == true ? 1 : 0
+  count = var.should_create ? 1 : 0
 
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
@@ -78,7 +78,7 @@ resource "aws_api_gateway_method_response" "S400" {
 }
 
 resource "aws_api_gateway_method_response" "S401" {
-  count = var.should_create == true ? 1 : 0
+  count = var.should_create ? 1 : 0
 
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
@@ -103,7 +103,7 @@ resource "aws_api_gateway_method_response" "S401" {
 # state. Detailed information on the `state move` command can be found in the
 # documentation online: https://www.terraform.io/docs/commands/state/mv.html
 resource "aws_api_gateway_integration_response" "S200" {
-  count = var.should_create == true ? 1 : 0
+  count = var.should_create ? 1 : 0
 
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
@@ -124,7 +124,7 @@ resource "aws_api_gateway_integration_response" "S200" {
 }
 
 resource "aws_api_gateway_integration_response" "S400" {
-  count = var.should_create == true ? 1 : 0
+  count = var.should_create ? 1 : 0
 
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
@@ -160,7 +160,7 @@ EOF
 # state. Detailed information on the `state move` command can be found in the
 # documentation online: https://www.terraform.io/docs/commands/state/mv.html
 resource "aws_api_gateway_integration_response" "S401" {
-  count = var.should_create == true ? 1 : 0
+  count = var.should_create ? 1 : 0
 
   rest_api_id = var.api_id
   resource_id = var.api_resource_id

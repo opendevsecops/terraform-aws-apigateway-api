@@ -1,5 +1,5 @@
 variable "should_create" {
-  type    = string
+  type    = bool
   default = true
 }
 
@@ -34,8 +34,8 @@ variable "authorization_scopes" {
 }
 
 variable "api_key_required" {
-  type    = string
-  default = ""
+  type    = bool
+  default = false
 }
 
 variable "request_template" {
