@@ -55,7 +55,7 @@ resource "aws_api_gateway_method_response" "S200" {
     "${var.response_content_type}" = var.response_model
   }
 
-  depends_on = [aws_api_gateway_method.method]
+  depends_on = [aws_api_gateway_integration.integration]
 }
 
 resource "aws_api_gateway_method_response" "S400" {
@@ -74,7 +74,7 @@ resource "aws_api_gateway_method_response" "S400" {
     "application/json" = "Error"
   }
 
-  depends_on = [aws_api_gateway_method.method]
+  depends_on = [aws_api_gateway_method_response.S200]
 }
 
 resource "aws_api_gateway_method_response" "S401" {
@@ -93,7 +93,7 @@ resource "aws_api_gateway_method_response" "S401" {
     "application/json" = "Error"
   }
 
-  depends_on = [aws_api_gateway_method.method]
+  depends_on = [aws_api_gateway_method_response.S400]
 }
 
 resource "aws_api_gateway_method_response" "S403" {
@@ -112,7 +112,7 @@ resource "aws_api_gateway_method_response" "S403" {
     "application/json" = "Error"
   }
 
-  depends_on = [aws_api_gateway_method.method]
+  depends_on = [aws_api_gateway_method_response.S401]
 }
 
 resource "aws_api_gateway_method_response" "S404" {
@@ -131,7 +131,7 @@ resource "aws_api_gateway_method_response" "S404" {
     "application/json" = "Error"
   }
 
-  depends_on = [aws_api_gateway_method.method]
+  depends_on = [aws_api_gateway_method_response.S403]
 }
 
 resource "aws_api_gateway_method_response" "S500" {
@@ -150,7 +150,7 @@ resource "aws_api_gateway_method_response" "S500" {
     "application/json" = "Error"
   }
 
-  depends_on = [aws_api_gateway_method.method]
+  depends_on = [aws_api_gateway_method_response.S404]
 }
 
 resource "aws_api_gateway_integration_response" "S200" {
@@ -168,10 +168,7 @@ resource "aws_api_gateway_integration_response" "S200" {
     "method.response.header.Content-Type"                = "'${var.response_content_type}'"
   }
   
-  depends_on = [
-    aws_api_gateway_method.method,
-    aws_api_gateway_method_response.S200,
-  ]
+  depends_on = [aws_api_gateway_method_response.S500]
 }
 
 resource "aws_api_gateway_integration_response" "S400" {
@@ -198,10 +195,7 @@ EOF
 
   }
 
-  depends_on = [
-    aws_api_gateway_method.method,
-    aws_api_gateway_method_response.S400,
-  ]
+  depends_on = [aws_api_gateway_integration_response.S200]
 }
 
 resource "aws_api_gateway_integration_response" "S401" {
@@ -228,10 +222,7 @@ EOF
 
   }
 
-  depends_on = [
-    aws_api_gateway_method.method,
-    aws_api_gateway_method_response.S401,
-  ]
+  depends_on = [aws_api_gateway_integration_response.S400]
 }
 
 resource "aws_api_gateway_integration_response" "S403" {
@@ -258,10 +249,7 @@ EOF
 
   }
 
-  depends_on = [
-    aws_api_gateway_method.method,
-    aws_api_gateway_method_response.S403,
-  ]
+  depends_on = [aws_api_gateway_integration_response.S401]
 }
 
 resource "aws_api_gateway_integration_response" "S404" {
@@ -288,10 +276,7 @@ EOF
 
   }
 
-  depends_on = [
-    aws_api_gateway_method.method,
-    aws_api_gateway_method_response.S404,
-  ]
+  depends_on = [aws_api_gateway_integration_response.S403]
 }
 
 resource "aws_api_gateway_integration_response" "S500" {
@@ -318,8 +303,5 @@ EOF
 
   }
 
-  depends_on = [
-    aws_api_gateway_method.method,
-    aws_api_gateway_method_response.S500,
-  ]
+  depends_on = [aws_api_gateway_integration_response.S404]
 }
