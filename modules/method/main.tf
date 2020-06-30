@@ -302,7 +302,7 @@ resource "aws_api_gateway_integration_response" "S500" {
   http_method = aws_api_gateway_method.method[0].http_method
   status_code = aws_api_gateway_method_response.S500[0].status_code
 
-  selection_pattern = ".*"
+  selection_pattern = ".+"
 
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
