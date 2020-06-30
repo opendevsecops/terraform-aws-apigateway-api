@@ -260,7 +260,7 @@ EOF
 
   depends_on = [
     aws_api_gateway_method.method,
-    aws_api_gateway_method_response.S401,
+    aws_api_gateway_method_response.S403,
   ]
 }
 
@@ -290,7 +290,7 @@ EOF
 
   depends_on = [
     aws_api_gateway_method.method,
-    aws_api_gateway_method_response.S401,
+    aws_api_gateway_method_response.S404,
   ]
 }
 
@@ -320,6 +320,6 @@ EOF
 
   depends_on = [
     aws_api_gateway_method.method,
-    aws_api_gateway_method_response.S401,
+    aws_api_gateway_method_response.S500,
   ]
 }
