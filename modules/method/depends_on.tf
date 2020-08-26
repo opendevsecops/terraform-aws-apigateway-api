@@ -1,7 +1,7 @@
 # depends_on workaround
 
 variable "module_depends_on" {
-  description = "Helper variable to simulate depends_on for terraform modules"
+  description = "(DO NOT USE) Helper variable to simulate depends_on for terraform modules"
   type        = list
   default     = [""]
 }

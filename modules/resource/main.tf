@@ -14,7 +14,7 @@ module "cors" {
 module "any" {
   source = "../method"
 
-  should_create = var.any_request_template == "" ? false : true
+  count = var.any_request_template == "" ? 0 : 1
 
   api_id          = var.rest_api_id
   api_resource_id = aws_api_gateway_resource.main.id
@@ -36,7 +36,7 @@ module "any" {
 module "get" {
   source = "../method"
 
-  should_create = var.get_request_template == "" ? false : true
+  count = var.get_request_template == "" ? 0 : 1
 
   api_id          = var.rest_api_id
   api_resource_id = aws_api_gateway_resource.main.id
@@ -58,7 +58,7 @@ module "get" {
 module "post" {
   source = "../method"
 
-  should_create = var.post_request_template == "" ? false : true
+  count = var.post_request_template == "" ? 0 : 1
 
   api_id          = var.rest_api_id
   api_resource_id = aws_api_gateway_resource.main.id
@@ -80,7 +80,7 @@ module "post" {
 module "patch" {
   source = "../method"
 
-  should_create = var.patch_request_template == "" ? false : true
+  count = var.patch_request_template == "" ? 0 : 1
 
   api_id          = var.rest_api_id
   api_resource_id = aws_api_gateway_resource.main.id
@@ -102,7 +102,7 @@ module "patch" {
 module "put" {
   source = "../method"
 
-  should_create = var.put_request_template == "" ? false : true
+  count = var.put_request_template == "" ? 0 : 1
 
   api_id          = var.rest_api_id
   api_resource_id = aws_api_gateway_resource.main.id
@@ -124,7 +124,7 @@ module "put" {
 module "delete" {
   source = "../method"
 
-  should_create = var.delete_request_template == "" ? false : true
+  count = var.delete_request_template == "" ? 0 : 1
 
   api_id          = var.rest_api_id
   api_resource_id = aws_api_gateway_resource.main.id

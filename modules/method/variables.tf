@@ -1,8 +1,3 @@
-variable "should_create" {
-  type    = bool
-  default = true
-}
-
 variable "api_id" {
   type = string
 }

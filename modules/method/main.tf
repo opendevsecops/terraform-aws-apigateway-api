@@ -2,8 +2,6 @@ data "aws_region" "current" {
 }
 
 resource "aws_api_gateway_method" "method" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id          = var.api_id
   resource_id          = var.api_resource_id
   http_method          = var.method
@@ -20,11 +18,9 @@ resource "aws_api_gateway_method" "method" {
 }
 
 resource "aws_api_gateway_integration" "integration" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
+  http_method = aws_api_gateway_method.method.http_method
 
   type                    = "AWS"
   integration_http_method = "POST"
@@ -39,11 +35,9 @@ resource "aws_api_gateway_integration" "integration" {
 }
 
 resource "aws_api_gateway_method_response" "S200" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
+  http_method = aws_api_gateway_method.method.http_method
   status_code = "200"
 
   response_parameters = {
@@ -59,11 +53,9 @@ resource "aws_api_gateway_method_response" "S200" {
 }
 
 resource "aws_api_gateway_method_response" "S400" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
+  http_method = aws_api_gateway_method.method.http_method
   status_code = "400"
 
   response_parameters = {
@@ -78,11 +70,9 @@ resource "aws_api_gateway_method_response" "S400" {
 }
 
 resource "aws_api_gateway_method_response" "S401" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
+  http_method = aws_api_gateway_method.method.http_method
   status_code = "401"
 
   response_parameters = {
@@ -97,11 +87,9 @@ resource "aws_api_gateway_method_response" "S401" {
 }
 
 resource "aws_api_gateway_method_response" "S403" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
+  http_method = aws_api_gateway_method.method.http_method
   status_code = "403"
 
   response_parameters = {
@@ -116,11 +104,9 @@ resource "aws_api_gateway_method_response" "S403" {
 }
 
 resource "aws_api_gateway_method_response" "S404" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
+  http_method = aws_api_gateway_method.method.http_method
   status_code = "404"
 
   response_parameters = {
@@ -135,11 +121,9 @@ resource "aws_api_gateway_method_response" "S404" {
 }
 
 resource "aws_api_gateway_method_response" "S500" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
+  http_method = aws_api_gateway_method.method.http_method
   status_code = "500"
 
   response_parameters = {
@@ -154,12 +138,10 @@ resource "aws_api_gateway_method_response" "S500" {
 }
 
 resource "aws_api_gateway_integration_response" "S200" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
-  status_code = aws_api_gateway_method_response.S200[0].status_code
+  http_method = aws_api_gateway_method.method.http_method
+  status_code = aws_api_gateway_method_response.S200.status_code
 
   content_handling = var.binary ? "CONVERT_TO_BINARY" : "CONVERT_TO_TEXT"
   
@@ -172,12 +154,10 @@ resource "aws_api_gateway_integration_response" "S200" {
 }
 
 resource "aws_api_gateway_integration_response" "S400" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
-  status_code = aws_api_gateway_method_response.S400[0].status_code
+  http_method = aws_api_gateway_method.method.http_method
+  status_code = aws_api_gateway_method_response.S400.status_code
 
   selection_pattern = "^\\[?[Bb]ad[Rr]equest\\]?.*"
 
@@ -199,12 +179,10 @@ EOF
 }
 
 resource "aws_api_gateway_integration_response" "S401" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
-  status_code = aws_api_gateway_method_response.S401[0].status_code
+  http_method = aws_api_gateway_method.method.http_method
+  status_code = aws_api_gateway_method_response.S401.status_code
 
   selection_pattern = "^\\[?[Uu]nauthorized\\]?.*"
 
@@ -226,12 +204,10 @@ EOF
 }
 
 resource "aws_api_gateway_integration_response" "S403" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
-  status_code = aws_api_gateway_method_response.S403[0].status_code
+  http_method = aws_api_gateway_method.method.http_method
+  status_code = aws_api_gateway_method_response.S403.status_code
 
   selection_pattern = "^\\[?[Ff]orbiden\\]?.*"
 
@@ -253,12 +229,10 @@ EOF
 }
 
 resource "aws_api_gateway_integration_response" "S404" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
-  status_code = aws_api_gateway_method_response.S404[0].status_code
+  http_method = aws_api_gateway_method.method.http_method
+  status_code = aws_api_gateway_method_response.S404.status_code
 
   selection_pattern = "^\\[?[Nn]ot[Ff]ound\\]?.*"
 
@@ -280,12 +254,10 @@ EOF
 }
 
 resource "aws_api_gateway_integration_response" "S500" {
-  count = var.should_create ? 1 : 0
-
   rest_api_id = var.api_id
   resource_id = var.api_resource_id
-  http_method = aws_api_gateway_method.method[0].http_method
-  status_code = aws_api_gateway_method_response.S500[0].status_code
+  http_method = aws_api_gateway_method.method.http_method
+  status_code = aws_api_gateway_method_response.S500.status_code
 
   selection_pattern = "^(?!\\[?[Bb]ad[Rr]equest\\]?|\\[?[Uu]nauthorized\\]?|\\[?[Ff]orbiden\\]?|\\[?[Nn]ot[Ff]ound\\]?).+"
 
