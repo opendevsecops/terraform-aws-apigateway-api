@@ -9,3 +9,7 @@ variable "description" {
   default     = ""
 }
 
+variable "default_response_content_type" {
+  type    = string
+  default = "application/json"
+}
