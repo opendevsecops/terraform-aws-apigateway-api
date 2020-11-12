@@ -144,12 +144,12 @@ resource "aws_api_gateway_integration_response" "S200" {
   status_code = aws_api_gateway_method_response.S200.status_code
 
   content_handling = var.binary ? "CONVERT_TO_BINARY" : "CONVERT_TO_TEXT"
-  
+
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
     "method.response.header.Content-Type"                = "'${var.response_content_type}'"
   }
-  
+
   depends_on = [aws_api_gateway_method_response.S500]
 }
 
