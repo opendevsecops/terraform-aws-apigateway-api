@@ -159,7 +159,7 @@ resource "aws_api_gateway_integration_response" "S400" {
   http_method = aws_api_gateway_method.method.http_method
   status_code = aws_api_gateway_method_response.S400.status_code
 
-  selection_pattern = "^\\[?[Bb]ad[Rr]equest\\]?.*"
+  selection_pattern = "^\\[?[Bb]ad\\s?[Rr]equest\\]?.*"
 
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
@@ -234,7 +234,7 @@ resource "aws_api_gateway_integration_response" "S404" {
   http_method = aws_api_gateway_method.method.http_method
   status_code = aws_api_gateway_method_response.S404.status_code
 
-  selection_pattern = "^\\[?[Nn]ot[Ff]ound\\]?.*"
+  selection_pattern = "^\\[?[Nn]ot\\s?[Ff]ound\\]?.*"
 
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
@@ -259,7 +259,7 @@ resource "aws_api_gateway_integration_response" "S500" {
   http_method = aws_api_gateway_method.method.http_method
   status_code = aws_api_gateway_method_response.S500.status_code
 
-  selection_pattern = "^(?!\\[?[Bb]ad[Rr]equest\\]?|\\[?[Uu]nauthorized\\]?|\\[?[Ff]orbiden\\]?|\\[?[Nn]ot[Ff]ound\\]?).+"
+  selection_pattern = "^(?!\\[?[Bb]ad\\s?[Rr]equest\\]?|\\[?[Uu]nauthorized\\]?|\\[?[Ff]orbiden\\]?|\\[?[Nn]ot\\s?[Ff]ound\\]?).+"
 
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
